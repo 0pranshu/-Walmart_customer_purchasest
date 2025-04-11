@@ -25,146 +25,127 @@ GROUP BY Customer_ID
 ORDER BY total_spent DESC  
 LIMIT 5;
 ```
-
-🔹 Calculate total purchases by age group and gender
-
+**Calculate total purchases by age group and gender**
+```sql
 SELECT age, gender, SUM(Purchase_Amount) AS total_purchase  
 FROM customer_purchases  
 GROUP BY age, gender  
 ORDER BY age ASC, gender ASC;
-
-🔹 Find customers who made repeat purchases
-
+```
+**Find customers who made repeat purchases**
+```sql
 SELECT Customer_ID, COUNT(*) AS purchase_count  
 FROM customer_purchases  
 GROUP BY Customer_ID  
 HAVING COUNT(*) > 1  
 ORDER BY purchase_count DESC;
+```
 
-2️⃣ Sales & Revenue Insights
+## Sales & Revenue Insights
 
-🔹 Top 3 product categories by total sales
-
+**Top 3 product categories by total sales**
+```sql
 SELECT category, SUM(Purchase_Amount) AS total_purchase  
 FROM customer_purchases  
 GROUP BY category  
 ORDER BY total_purchase DESC  
 LIMIT 3;
-
-🔹 Monthly revenue analysis
-
+```
+**Monthly revenue analysis**
+```sql
 SELECT EXTRACT(YEAR FROM Purchase_Date) AS year,  
        EXTRACT(MONTH FROM Purchase_Date) AS month,  
        SUM(Purchase_Amount) AS total_revenue  
 FROM customer_purchases  
 GROUP BY year, month  
 ORDER BY year ASC, month ASC;
+```
 
-3️⃣ Product Performance Analysis
+## Product Performance Analysis
 
-🔹 Top 5 highest-rated products
-
+**Top 5 highest-rated products**
+```sql
 SELECT Product_Name, ROUND(AVG(Rating), 2) AS avg_rating  
 FROM customer_purchases  
 GROUP BY Product_Name  
 ORDER BY avg_rating DESC  
 LIMIT 5;
-
-🔹 Most frequently purchased product in each category
-
+```
+**Most frequently purchased product in each category**
+```sql
 SELECT DISTINCT ON (Category) Category, Product_Name, COUNT(*) AS purchase_count  
 FROM customer_purchases  
 GROUP BY Category, Product_Name  
 ORDER BY Category, purchase_count DESC;
-
-🔹 City with the highest total sales
-
+```
+**City with the highest total sales**
+```sql
 SELECT City, SUM(Purchase_Amount) AS total_sales  
 FROM customer_purchases  
 GROUP BY City  
 ORDER BY total_sales DESC  
 LIMIT 1;
+```
+## Payment & Transaction Insights
 
-4️⃣ Payment & Transaction Insights
-
-🔹 Most commonly used payment method
-
+**Most commonly used payment method**
+```sql
 SELECT Payment_Method, COUNT(*) AS usage_count  
 FROM customer_purchases  
 GROUP BY Payment_Method  
 ORDER BY usage_count DESC  
 LIMIT 1;
-
-🔹 Average purchase amount per payment method
-
+```
+**Average purchase amount per payment method**
+```sql
 SELECT Payment_Method, ROUND(CAST(AVG(Purchase_Amount) AS NUMERIC), 2) AS avg_purchase_amount  
 FROM customer_purchases  
 GROUP BY Payment_Method  
 ORDER BY avg_purchase_amount DESC;
-
-🔹 Payment method with highest transaction values
-
+```
+**Payment method with highest transaction values**
+```sql
 SELECT Payment_Method, SUM(Purchase_Amount) AS total_transaction_value  
 FROM customer_purchases  
 GROUP BY Payment_Method  
 ORDER BY total_transaction_value DESC  
 LIMIT 1;
+```
+## Customer Satisfaction & Experience
 
-5️⃣ Customer Satisfaction & Experience
-
-🔹 Average rating per product category
-
+**Average rating per product category**
+```sql
 SELECT Category, ROUND(AVG(Rating), 2) AS avg_rating  
 FROM customer_purchases  
 GROUP BY Category  
 ORDER BY avg_rating DESC;
-
-🔹 Top 3 cities with highest average customer ratings
-
+```
+**Top 3 cities with highest average customer ratings**
+```sql
 SELECT City, ROUND(AVG(Rating), 2) AS average_customer_ratings  
 FROM customer_purchases  
 GROUP BY City  
 ORDER BY average_customer_ratings DESC  
 LIMIT 3;
-
-🔹 Analyzing how discounts impact repeat purchases
-
+```
+**Analyzing how discounts impact repeat purchases**
+```sql
 SELECT Repeat_Customer, ROUND(AVG(Discount_Applied), 2) AS avg_discount  
 FROM customer_purchases  
 GROUP BY Repeat_Customer  
 ORDER BY avg_discount DESC;
+```
 
-🛠️ Setup Instructions
+## Insights & Findings
 
-Clone the Repository
+1. **High-value customers contribute significantly to revenue.**
 
-git clone https://github.com/yourusername/walmart-analysis.git
-cd walmart-analysis
+2. **Discounts influence repeat purchases but need optimization.**
 
-Load Data into PostgreSQL
+3. **Certain product categories dominate total sales.**
 
-Use customer_purchases.sql to create and import the dataset.
+4. **Customer ratings vary across cities, affecting regional performance.**
 
-Run SQL Queries
+5. **Payment preferences impact transaction values and customer spending.**
 
-Execute queries in queries.sql to analyze the dataset.
 
-🎯 Insights & Findings
-
-High-value customers contribute significantly to revenue.
-
-Discounts influence repeat purchases but need optimization.
-
-Certain product categories dominate total sales.
-
-Customer ratings vary across cities, affecting regional performance.
-
-Payment preferences impact transaction values and customer spending.
-
-📢 Contributing
-
-Feel free to fork the repository and contribute by improving queries or adding new insights.
-
-📜 License
-
-This project is open-source and available under the MIT License.

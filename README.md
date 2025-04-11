@@ -1,20 +1,19 @@
-##Walmart_customer_purchasest
+## Walmart_customer_purchasest
 **Walmart Customer Purchases Analysis**
 **Project Overview**
 
 **This project analyzes Walmart's customer purchase data using PostgreSQL. It aims to uncover insights into customer behavior, sales trends, product performance, and payment preferences.**
 
-##Dataset Information
+## Dataset Information
 
 **Database Name: Walmart_customer_purchasest**
 
 **Table Name: customer_purchases**
 
-**Columns:
-
+**Columns
 Customer_ID, Age, Gender, City, Category, Product_Name, Purchase_Date, Purchase_Amount, Payment_Method, Discount_Applied, Rating, Repeat_Customer**
 
-##Business Problems & SQL Solutions
+## Business Problems & SQL Solutions
 
 **Customer Segmentation & Behavior Analysis**
 

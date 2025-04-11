@@ -1,31 +1,31 @@
-# -Walmart_customer_purchasest
-Walmart Customer Purchases Analysis
+##Walmart_customer_purchasest
+**Walmart Customer Purchases Analysis**
+**Project Overview**
 
-📌 Project Overview
+**This project analyzes Walmart's customer purchase data using PostgreSQL. It aims to uncover insights into customer behavior, sales trends, product performance, and payment preferences.**
 
-This project analyzes Walmart's customer purchase data using PostgreSQL. It aims to uncover insights into customer behavior, sales trends, product performance, and payment preferences.
+##Dataset Information
 
-📊 Dataset Information
+**Database Name: Walmart_customer_purchasest**
 
-Database Name: Walmart_customer_purchasest
+**Table Name: customer_purchases**
 
-Table Name: customer_purchases
+**Columns:
 
-Columns:
+Customer_ID, Age, Gender, City, Category, Product_Name, Purchase_Date, Purchase_Amount, Payment_Method, Discount_Applied, Rating, Repeat_Customer**
 
-Customer_ID, Age, Gender, City, Category, Product_Name, Purchase_Date, Purchase_Amount, Payment_Method, Discount_Applied, Rating, Repeat_Customer
+##Business Problems & SQL Solutions
 
-📈 Business Problems & SQL Solutions
+**Customer Segmentation & Behavior Analysis**
 
-1️⃣ Customer Segmentation & Behavior Analysis
-
-🔹 Identify top customers by spending
-
+**Identify top customers by spending**
+```sql
 SELECT Customer_ID, SUM(Purchase_Amount) AS total_spent  
 FROM customer_purchases  
 GROUP BY Customer_ID  
 ORDER BY total_spent DESC  
 LIMIT 5;
+```
 
 🔹 Calculate total purchases by age group and gender
 
